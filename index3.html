@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rania</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+        h1 { color: #d63384; font-size: 2.5rem; margin-bottom: 20px; }
+        .gif-container img { width: 230px; border-radius: 15px; }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        #yesBtn { background-color: #4caf50; color: white; z-index: 10; }
+        #noBtn { background-color: #f44336; color: white; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="questionContainer">
+        <div class="gif-container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1bm5mNjM1Z3R6Z3ZqbmZ6Z3ZqbmZ6Z3ZqbmZ6Z3ZqbmZ6Z3ZqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute cat">
+        </div>
+        <h1>Rania thebini?</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="showLove()">Yes</button>
+            <button id="noBtn" onclick="growYesButton()">No</button>
+        </div>
+    </div>
+
+    <div id="loveContainer" class="hidden">
+        <div class="gif-container">
+            <img src="https://media.tenor.com/0v_fshS_S78AAAAC/bear-hug.gif" alt="Bears Hugging">
+        </div>
+        <h1 style="color: #e91e63;">hmmm ❤️</h1>
+    </div>
+
+    <script>
+        let yesScale = 1;
+
+        function growYesButton() {
+            const yesBtn = document.getElementById('yesBtn');
+            yesScale += 0.5; // يكبر بنسبة كبيرة في كل ضغطة
+            yesBtn.style.transform = `scale(${yesScale})`;
+            
+            // تحريك زر No قليلاً ليعطي مساحة لزر Yes
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.transform = `translateX(${yesScale * 10}px)`;
+        }
+
+        function showLove() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('loveContainer').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
